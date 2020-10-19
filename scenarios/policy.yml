@@ -1,0 +1,67 @@
+config:
+  runStrategy:
+    runs: 1
+    maxSecondsBetweenRuns: 30
+    minSecondsBetweenRuns: 1
+scenarios:
+    - name: Count pods with a specific label.
+      steps:
+      - podAction:
+          matches:
+            - labels:
+                namespace: "powerfulseal"
+                selector: important=true
+          actions:
+            - checkPodCount:
+                count: 3
+    - name: Kill the pod and restart it.
+      steps:
+      - podAction:
+          matches:
+            - namespace: "emojivoto"
+          filters:
+            - randomSample:
+               size: 1
+          actions:
+            - kill:
+                force: true
+
+      - wait:
+          seconds: 30
+      - podAction:
+          matches:
+            - namespace: "emojivoto"
+          actions:
+            - checkPodState:
+                state: Running
+            - checkPodCount:
+                count: 3
+    - name: Verify there only running pods
+      steps:
+      - podAction:
+          matches:
+            - namespace: emojivoto
+          filters:
+            # pods not running
+            - property:
+                name: state
+                value: Running
+                negative: true
+            - randomSample:
+                size: 1
+          actions:
+            - checkPodCount:
+                count: 3
+    - name: Stop that host!
+      steps:
+      - podAction:
+          matches:
+            - namespace: emojivoto
+          filters:
+            - randomSample:
+                size: 1
+          actions:
+            - stopHost:
+                autoRestart: true
+      - wait:
+          seconds: 30
