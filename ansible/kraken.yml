@@ -3,7 +3,7 @@
   gather_facts: true
   #remote_user: "{{ orchestration_user }}"
   vars_files:
-   - kraken_vars.yml
+   - vars/kraken_vars.yml
 
   tasks:
   - name: Git clone kraken repository
