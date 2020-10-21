@@ -1,7 +1,7 @@
 kraken:
-    kubeconfig_path: {{ kubeconfig_path }}                 # Path to kubeconfig
+    kubeconfig_path: /var/lib/jenkins/.kube/config                # Path to kubeconfig
     exit_on_failure: {{ exit_on_failure }}                 # Exit when a post action scenario fails
-    scenarios: {{ scenarios }}                             # List of policies/chaos scenarios to load
+    scenarios:  scenarios/policy.yml                       # List of policies/chaos scenarios to load
 
 cerberus:
     cerberus_enabled: {{ cerberus_enabled }}               # Enable it when cerberus is previously installed
