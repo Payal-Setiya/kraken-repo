@@ -9,11 +9,11 @@ scenarios:
       - podAction:
           matches:
             - labels:
-                namespace: "powerfulseal"
+                namespace: "emojivoto"
                 selector: important=true
           actions:
             - checkPodCount:
-                count: 3
+                count: 1
     - name: Kill the pod and restart it.
       steps:
       - podAction:
@@ -35,7 +35,7 @@ scenarios:
             - checkPodState:
                 state: Running
             - checkPodCount:
-                count: 3
+                count: 1
     - name: Verify there only running pods
       steps:
       - podAction:
@@ -51,7 +51,7 @@ scenarios:
                 size: 1
           actions:
             - checkPodCount:
-                count: 3
+                count: 1
     - name: Stop that host!
       steps:
       - podAction:
