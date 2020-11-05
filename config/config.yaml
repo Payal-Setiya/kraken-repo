@@ -3,11 +3,11 @@ kraken:
     kubeconfig_path: /var/lib/jenkins/.kube/config                    # Path to kubeconfig
     exit_on_failure: False                                 # Exit when a post action scenario fails
     scenarios:                                             # List of policies/chaos scenarios to load
-        -    scenarios/policy.yml
+      #  -    scenarios/policy.yml
       #  - -    scenarios/openshift-kube-apiserver.yml
        # - -    scenarios/openshift-apiserver.yml
-        #- -    scenarios/regex_openshift_pod_kill.yml
-         # -    scenarios/post_action_regex.py
+        - -    scenarios/regex_openshift_pod_kill.yml
+         
     #node_scenarios:                                        # List of chaos node scenarios to load
      #   -   scenarios/node_scenarios_example.yml
 
