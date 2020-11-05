@@ -8,7 +8,7 @@ scenarios:
     steps:
     - podAction:
         matches:
-          - namespace: "openshift-.*"
+          - namespace: "emojivoto"
         filters:
           - property:
              name: "state"
